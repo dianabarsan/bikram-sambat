@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   bootstrap_tests:
-    name: Running on Node v${{ matrix.node-version }}
+    name: Test bootstrap on Node v${{ matrix.node-version }}
     runs-on: ubuntu-18.04
 
     strategy:
@@ -25,7 +25,7 @@ jobs:
       - run: npm test
 
   library_tests:
-    name: Running on Node v${{ matrix.node-version }}
+    name: Test library on Node v${{ matrix.node-version }}
     runs-on: ubuntu-18.04
 
     strategy:
