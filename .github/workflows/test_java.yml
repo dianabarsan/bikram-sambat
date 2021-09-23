@@ -9,9 +9,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.3
-      - name: Set up Java 11
+      - name: Set up Java
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 1.8
+      - run: sdkmanager platform-tools
+      - run: sdkmanager "ndk;21.4.7075529"
       - name: Test
         run: make test-java
