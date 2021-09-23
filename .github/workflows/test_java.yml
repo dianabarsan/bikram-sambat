@@ -16,12 +16,6 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
       - run: sdkmanager "ndk;21.4.7075529"
-      name: specify NDK
-        uses: ravinderjangra/android-ndk-toolchain-setup@0.2
-        with:
-          api: '21'
-          arch: 'x86'
-          install-location: 'toolchains'
-          force: true
+      - run: sdkmanager "cmake;3.10.2.4988404"
       - name: Test
         run: make test-java
