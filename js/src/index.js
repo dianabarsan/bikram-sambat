@@ -62,6 +62,15 @@ function toBik_text(greg) {
   return toDevanagari(d.day) + ' ' + MONTH_NAMES[d.month-1] + ' ' + toDevanagari(d.year);
 }
 
+function toBik_format(greg) {
+  var d = toBik(greg);
+  return {
+    day: toDevanagari(d.day),
+    month: MONTH_NAMES[d.month-1],
+    year: toDevanagari(d.year)
+  };
+}
+
 function toGreg(year, month, day) {
   // TODO month bounds-checking should be handled in daysInMonth()
   if(month < 1) throw new Error('Invalid month value ' + month);
@@ -99,6 +108,7 @@ module.exports = {
   toBik_dev: toBik_dev,
   toBik_euro: toBik_euro,
   toBik_text: toBik_text,
+  toBik_format: toBik_format,
   toGreg: toGreg,
   toGreg_text: toGreg_text
 };
