@@ -32,6 +32,14 @@ android {
 	compileSdkVersion 23
 	buildToolsVersion '26.0.1'
 
+	defaultConfig {
+    ndk {
+      // Tells Gradle to build outputs for the following ABIs and package
+      // them into your APK.
+      abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+    }
+  }
+
 	packagingOptions {
 		exclude 'META-INF/LICENSE'
 		exclude 'META-INF/NOTICE'
