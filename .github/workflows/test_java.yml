@@ -18,7 +18,7 @@ jobs:
       - run: sdkmanager "ndk;21.4.7075529"
       - run: sdkmanager "cmake;3.10.2.4988404"
       - shell: bash
-          run: mkdir toolchains
+        run: mkdir toolchains
       - name: specify NDK
         uses: ravinderjangra/android-ndk-toolchain-setup@0.2
         with:
