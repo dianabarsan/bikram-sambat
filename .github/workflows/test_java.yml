@@ -16,6 +16,6 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
       - run: sdkmanager "ndk;17.2.4988734"
-      - run: sdkmanager "cmake;3.10.2.4988404"
+      #- run: sdkmanager "cmake;3.10.2.4988404"
       - name: Test
         run: make test-java
