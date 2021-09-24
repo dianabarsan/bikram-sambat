@@ -1,15 +1,15 @@
-name: Test JS
+name: Test Java
 
 on: [push, pull_request]
 
 jobs:
-  bootstrap_tests:
-    name: Test bootstrap on Node v${{ matrix.node-version }}
+  js-bootstrap:
+    name: Test JS bootstrap on Node v${{ matrix.node-version }}
     runs-on: ubuntu-18.04
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [ 8.x, 10.x, 12.x ]
 
     defaults:
       run:
@@ -24,8 +24,8 @@ jobs:
       - run: npm ci
       - run: npm test
 
-  library_tests:
-    name: Test library on Node v${{ matrix.node-version }}
+  js-library:
+    name: Test JS library on Node v${{ matrix.node-version }}
     runs-on: ubuntu-18.04
 
     strategy:
@@ -44,3 +44,24 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm test
+
+  java-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.3
+      - name: Set up Java
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: 1.8
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+      - uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r17c
+      - name: Test
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+        run: make test-java
