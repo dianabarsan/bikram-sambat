@@ -54,8 +54,7 @@ assemble-java:
 	cd java && ${GRADLEW} assemble
 
 test-java:
-	cd java && ${GRADLEW} test
-
+	JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8 cd java && ${GRADLEW} test
 
 .PHONY: android android-logs android-uninstall
 
