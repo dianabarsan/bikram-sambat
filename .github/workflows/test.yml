@@ -46,6 +46,7 @@ jobs:
       - run: npm test
 
   java-tests:
+    name: Test Java
     runs-on: ubuntu-latest
 
     steps:
